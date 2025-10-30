@@ -5,12 +5,12 @@
       "use": "@vercel/node",
       "config": {
         "includeFiles": [
-          "client/dist/**" // Ensure static files are included in the function bundle
+          "client/dist/**" 
         ]
       }
     },
     {
-      "src": "client/dist/**", // New build for static files
+      "src": "client/dist/**",
       "use": "@vercel/static"
     }
   ],
