@@ -2,7 +2,16 @@
   "builds": [
     {
       "src": "index.js",
-      "use": "@vercel/node"
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": [
+          "client/dist/**" // Ensure static files are included in the function bundle
+        ]
+      }
+    },
+    {
+      "src": "client/dist/**", // New build for static files
+      "use": "@vercel/static"
     }
   ],
   "routes": [
@@ -14,5 +23,7 @@
       "src": "/(.*)",
       "dest": "/client/dist/$1"
     }
-  ]
+  ],
+  "installCommand": "npm install && cd client && npm install",
+  "buildCommand": "cd client && npm run build" 
 }
